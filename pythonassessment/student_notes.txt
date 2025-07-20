@@ -1,0 +1,3 @@
+This is a file containing student notes.
+Python is fun and easy to learn.
+We are learning file handling now.
