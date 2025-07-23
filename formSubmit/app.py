@@ -1,10 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-client = MongoClient("mongodb+srv://abouhamid9696:blox9oOXktcEDdR7@cluster0.fpd0kqr.mongodb.net/")
+mongo_uri = os.getenv("MONGO_URI")
+if not mongo_uri:
+    raise Exception("MONGO_URI Issue.")
+
+client = MongoClient(mongo_uri)
 db = client['mydatabase']
 collection = db['formdata']
 
